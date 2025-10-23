@@ -1,0 +1,13 @@
+{
+  "users": [
+    {
+      "id": "be70",
+      "firstName": "shubham ",
+      "lastName": "Gupta",
+      "email": "shubhamgupta",
+      "password": "G@123",
+      "age": 100,
+      "designation": "hello"
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+/* ------------------- Full-page background ------------------- */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #ffecd2, #fcb69f); /* Warm gradient */
+}
+
+/* ------------------- Wrapper to center signup ------------------- */
+.signup-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  width: 100%;
+  padding: 20px; /* extra space on very small screens */
+  box-sizing: border-box;
+}
+
+/* ------------------- Signup container ------------------- */
+.signup-container {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  padding: 40px 50px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  max-width: 100%;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.signup-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* ------------------- Header ------------------- */
+.signup-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+}
+
+/* ------------------- Input Groups ------------------- */
+.input-group {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #444;
+  font-size: 14px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1.5px solid #ccc;
+  border-radius: 12px;
+  font-size: 15px;
+  background: #fafafa;
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+}
+
+.input-group input:focus {
+  border-color: #ff7e5f;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(255, 126, 95, 0.2);
+  outline: none;
+}
+
+/* ------------------- Error messages ------------------- */
+.error small {
+  color: #e63946;
+  font-size: 13px;
+  display: block;
+  margin-top: 4px;
+}
+
+/* ------------------- Signup button ------------------- */
+.signup-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #ff7e5f, #feb47b);
+  color: rgb(83, 49, 231);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.signup-btn:hover {
+  background: linear-gradient(90deg, #feb47b, #ff7e5f);
+  box-shadow: 0 5px 20px rgba(255, 126, 95, 0.4);
+}
+
+.signup-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* ------------------- Message below form ------------------- */
+.message {
+  margin-top: 15px;
+  color: #333;
+  font-size: 14px;
+}
+
+/* ------------------- Responsive for mobile ------------------- */
+@media (max-width: 480px) {
+  .signup-container {
+    padding: 30px 25px;
+    width: 100%;
+  }
+  .signup-header h1 {
+    font-size: 1.75rem;
+  }
+  .input-group input {
+    padding: 10px 12px;
+  }
+  .signup-btn {
+    padding: 10px;
+    font-size: 15px;
+  }
+}
