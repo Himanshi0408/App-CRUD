@@ -34,35 +34,53 @@ export class SignupComponent {
   }
 
   validateEmail(email: string): boolean {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
     return emailPattern.test(email);
   }
 
   validatePassword(password: string): boolean {
-    // Minimum 8 characters, at least one uppercase letter
+   
     const passwordPattern = /^(?=.*[A-Z]).{8,}$/;
     return passwordPattern.test(password);
   }
 
+  validateName(name: string): boolean {
+    
+    const namePattern = /^[A-Za-z]+$/;
+    return namePattern.test(name);
+  }
+
   signup(): void {
+   
+    if (!this.validateName(this.user.firstName) || !this.validateName(this.user.lastName)) {
+      this.message = 'First and last name should contain letters only!';
+      this.messageType = 'error';
+      return;
+    }
+
+    //Validate email (only lowercase)
     if (!this.validateEmail(this.user.email)) {
       this.message = 'Please enter a valid email address!';
       this.messageType = 'error';
       return;
     }
 
+    //Validate password
     if (!this.validatePassword(this.user.password)) {
       this.message = 'Password must be at least 8 characters long and include at least one uppercase letter!';
       this.messageType = 'error';
       return;
     }
 
-    if (this.user.age < 0) {
-      this.message = 'Age cannot be negative!';
+    //  Validate age
+    if (this.user.age <= 0 || this.user.age > 100) {
+      this.message = 'Age must be between 1 and 100!';
       this.messageType = 'error';
       return;
     }
 
+    //  Check if email already exists
     this.userService.getUsers().subscribe(users => {
       const exists = users.some(u => u.email === this.user.email);
       if (exists) {
@@ -80,3 +98,5 @@ export class SignupComponent {
     });
   }
 }
+
+      
