@@ -1,13 +1,22 @@
 {
   "users": [
     {
-      "id": "be70",
-      "firstName": "shubham ",
-      "lastName": "Gupta",
-      "email": "shubhamgupta",
-      "password": "G@123",
-      "age": 100,
-      "designation": "hello"
+      "id": "52b9",
+      "firstName": "himanshi",
+      "lastName": "tiwari",
+      "email": "himanshitiwari@gmail.com",
+      "password": "Manshi@123",
+      "age": 22,
+      "designation": "SE"
+    },
+    {
+      "id": "8c36",
+      "firstName": "SHUBHAM ",
+      "lastName": "12345678",
+      "email": "QWETY@gmail.com",
+      "password": "gUPTA@22",
+      "age": 99,
+      "designation": "HELLO "
     }
   ]
 }
