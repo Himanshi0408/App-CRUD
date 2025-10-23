@@ -1,0 +1,14 @@
+/* Make sure body and html take full height */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Full page wrapper */
+.login-wrapper {
+  display: flex;
+  justify-content: center;  
+  align-items: center;      /* vertical center */
+  height: 100vh;            /* full viewport height */
+  background: linear-gradient(to right, #dbeafe, #a7f3d0);
+}
