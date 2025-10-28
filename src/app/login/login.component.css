@@ -1,91 +1,96 @@
-
 .login-wrapper {
-  display: flex; /* Flexbox enables centering */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  height: 100vh; /* Takes full viewport height */
-  /* Soft, modern gradient for background */
-  background: linear-gradient(135deg, #e0f2fe, #d1fae5); 
-  font-family: 'Poppins', sans-serif; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  background: linear-gradient(135deg, #e0f2fe, #d1fae5);
+  font-family: 'Poppins', sans-serif;
   padding: 20px;
   box-sizing: border-box;
 }
 
-/* ------------------- Form container (The White Box) ------------------- */
+/* Form container  */
 .login-wrapper form {
-  background: rgba(255, 255, 255, 1); 
+  background: rgba(255, 255, 255, 1);
   backdrop-filter: blur(10px);
-  padding: 50px 40px; /* Ample internal spacing */
-  border-radius: 16px; 
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
-  width: 380px; /* Defined width for better structure */
+  padding: 50px 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 380px;
   max-width: 95vw;
   text-align: center;
-  border: 1px solid #f0f0f0; 
+  border: 1px solid #f0f0f0;
   animation: fadeIn 0.6s ease-in-out;
 }
 
-/* ------------------- Animation ------------------- */
+/*  Animation*/
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* ------------------- Title ------------------- */
+/* Title */
 .login-title {
-  margin-bottom: 35px; /* Spacing below the title */
-  color: #1f2937; 
-  font-size: 26px; 
+  margin-bottom: 35px; 
+  color: #1f2937;
+  font-size: 26px;
   font-weight: 700;
   letter-spacing: 0.5px;
 }
 
-/* ------------------- Input groups (Crucial Spacing Fix) ------------------- */
+
 .input-group {
   display: flex;
   flex-direction: column;
-  gap: 6px; /* Space between label and input */
-  margin-bottom: 25px; /* **This creates the proper gap between Email and Password fields** */
+  gap: 6px;
+  margin-bottom: 25px; /*This creates the proper gap between Email and Password fields */
   text-align: left;
 }
 
 .input-group label {
   font-weight: 600;
-  color: #4b5563; 
-  font-size: 15px; 
+  color: #4b5563;
+  font-size: 15px;
   display: flex;
   align-items: center;
-  gap: 10px; 
-  margin-bottom: 4px; /* Space above the input field */
+  gap: 10px;
+  margin-bottom: 4px;
 }
 
 .input-group i {
-  color: #9ca3af; 
+  color: #9ca3af;
   font-size: 16px;
 }
 
 .input-group input {
-  padding: 14px 16px; 
-  border-radius: 8px; 
-  border: 1px solid #e5e7eb; 
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
   font-size: 16px;
-  background-color: #ffffff; 
+  background-color: #ffffff;
   transition: all 0.3s ease;
   outline: none;
 }
 
 .input-group input:focus {
   border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2); 
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
   background-color: #ffffff;
 }
 
-/* ------------------- Button ------------------- */
+/* -- Button - */
 .login-btn {
   width: 100%;
-  padding: 15px; 
-  margin-top: 25px; /* Good separation from input field */
-  background-color: #2563eb; 
+  padding: 15px;
+  margin-top: 25px;
+  background-color: #2563eb;
   color: white;
   font-size: 16px;
   font-weight: 600;
@@ -97,9 +102,9 @@
 }
 
 .login-btn:hover:not(:disabled) {
-  background-color: #1e40af; 
-  transform: translateY(-2px); 
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45); 
+  background-color: #1e40af;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
 }
 
 .login-btn:disabled {
@@ -109,15 +114,14 @@
   box-shadow: none;
 }
 
-/* ------------------- Message Styling ------------------- */
+/* Message Styling  */
 p {
-  margin-top: 20px; 
-  font-weight: 600; 
-  font-size: 15px; 
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 15px;
   text-align: center;
 }
 
-/* ------------------- Responsive ------------------- */
 @media (max-width: 480px) {
   .login-wrapper form {
     padding: 30px 20px;

@@ -32,7 +32,7 @@ export class LoginComponent {
     this.userService.login(emailInput, passwordInput).subscribe((users) => {
       if (users.length > 0) {
         this.message = 'Login successful!';
-        localStorage.setItem('loggedIn', 'true'); // for route protection
+        localStorage.setItem('loggedIn', 'true'); 
         setTimeout(() => this.router.navigate(['/users']), 1000);
       } else {
         this.message = 'Invalid email or password.';

@@ -1,59 +1,86 @@
-
 <div class="signup-wrapper">
   <div class="signup-container">
-    <form (ngSubmit)="signup()" #signupForm="ngForm" novalidate>
+    <form (ngSubmit)="signup(signupForm)" #signupForm="ngForm" novalidate>
       <div class="signup-header">
         <h1>Sign Up</h1>
       </div>
 
+      <!-- First Name -->
       <div class="input-group">
-        <label for="firstName">First Name</label>
-        <input type="text" id="firstName" name="firstName" [(ngModel)]="user.firstName" required placeholder="Enter your first name"/>
-      </div>
-
-      <div class="input-group">
-        <label for="lastName">Last Name</label>
-        <input type="text" id="lastName" name="lastName" [(ngModel)]="user.lastName" required placeholder="Enter your last name"/>
-      </div>
-
-      <div class="input-group">
-        <label for="email">Email ID</label>
-        <input type="email" id="email" name="email" [(ngModel)]="user.email" #email="ngModel" required email placeholder="Enter your email"/>
-        <div class="error" *ngIf="email.invalid && (email.dirty || email.touched)">
-          <small *ngIf="email.errors?.['required']">Email is required.</small>
-          <small *ngIf="email.errors?.['email']">Please enter a valid email.</small>
+        <label for="firstName">
+          First Name <span class="required">*</span>
+        </label>
+        <input type="text" id="firstName" name="firstName" [(ngModel)]="user.firstName" #firstName="ngModel" required
+          placeholder="Enter your first name" />
+        <div class="error" *ngIf="errors['firstName']">
+          <small>{{ errors['firstName'] }}</small>
         </div>
       </div>
 
+      <!-- Last Name -->
       <div class="input-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" [(ngModel)]="user.password" #password="ngModel"
-               required minlength="8" pattern="^(?=.*[A-Z]).{8,}$" placeholder="Enter your password"/>
-        <div class="error" *ngIf="password.invalid && (password.dirty || password.touched)">
-          <small *ngIf="password.errors?.['required']">Password is required.</small>
-          <small *ngIf="password.errors?.['minlength']">Password must be at least 8 characters.</small>
-          <small *ngIf="password.errors?.['pattern']">Password must contain at least one uppercase letter.</small>
+        <label for="lastName">
+          Last Name <span class="required">*</span>
+        </label>
+        <input type="text" id="lastName" name="lastName" [(ngModel)]="user.lastName" #lastName="ngModel" required
+          placeholder="Enter your last name" />
+        <div class="error" *ngIf="errors['lastName']">
+          <small>{{ errors['lastName'] }}</small>
         </div>
       </div>
 
+      <!-- Email -->
+      <div class="input-group">
+        <label for="email">
+          Email ID <span class="required">*</span>
+        </label>
+        <input type="email" id="email" name="email" [(ngModel)]="user.email" #email="ngModel" required
+          placeholder="Enter your email" />
+        <div class="error" *ngIf="errors['email']">
+          <small>{{ errors['email'] }}</small>
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="input-group">
+        <label for="password">
+          Password <span class="required">*</span>
+        </label>
+        <input type="password" id="password" name="password" [(ngModel)]="user.password" #password="ngModel" required
+          placeholder="Enter your password" />
+        <div class="error" *ngIf="errors['password']">
+          <small>{{ errors['password'] }}</small>
+        </div>
+      </div>
+
+      <!-- Age -->
       <div class="input-group">
         <label for="age">Age</label>
         <input type="number" id="age" name="age" [(ngModel)]="user.age" min="0" (keypress)="preventNegative($event)"
-               required placeholder="Enter your age"/>
+          placeholder="Enter your age" />
+        <div class="error" *ngIf="errors['age']">
+          <small>{{ errors['age'] }}</small>
+        </div>
       </div>
 
+      <!-- Designation -->
       <div class="input-group">
-        <label for="designation">Designation</label>
-        <input type="text" id="designation" name="designation" [(ngModel)]="user.designation"
-               required placeholder="Enter your designation"/>
+        <label for="designation">
+          Designation <span class="required">*</span>
+        </label>
+        <input type="text" id="designation" name="designation" [(ngModel)]="user.designation" #designation="ngModel"
+          required placeholder="Enter your designation" />
+        <div class="error" *ngIf="errors['designation']">
+          <small>{{ errors['designation'] }}</small>
+        </div>
       </div>
 
-      <button type="submit" class="signup-btn" [disabled]="signupForm.invalid">Signup</button>
-
-      <div class="message">
-        <p *ngIf="message">{{ message }}</p>
+      <button type="submit" class="signup-btn">
+        Signup
+      </button>
+      <div *ngIf="successMessage" class="success-message">
+        {{ successMessage }}
       </div>
     </form>
   </div>
 </div>
-

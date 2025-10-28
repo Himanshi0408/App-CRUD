@@ -28,7 +28,6 @@ export class UsersComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
-    // Protect page: redirect if not logged in
     if (!localStorage.getItem('loggedIn')) {
       this.router.navigate(['/login']);
       return;
@@ -36,7 +35,7 @@ export class UsersComponent implements OnInit {
     this.loadUsers();
   }
 
-  /** Load all users from server */
+  // Load all users from server
   loadUsers(): void {
     this.http.get<User[]>(this.apiUrl).subscribe({
       next: (data) => (this.users = data),
@@ -44,42 +43,57 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  
   onEdit(user: User): void {
-    this.selectedUser = { ...user }; // Clone to avoid direct table edit
+    this.selectedUser = { ...user }; // open modal with user data
   }
 
-  
+  onSaveChanges(): void {
+    if (!this.selectedUser || !this.selectedUser.id) return;
 
-onSaveChanges(): void {
- if (!this.selectedUser || !this.selectedUser.id) return;
-  
- 
-  //  Check if age is negative or zero (assuming age must be > 0)
-  if (this.selectedUser.age <= 0) {
-      alert('Age must be a positive number.'); 
+    const errors: string[] = [];
+
+    // First Name validation
+    if (!this.selectedUser.firstName.trim()) {
+      errors.push('First name is required');
+    } else if (/\d/.test(this.selectedUser.firstName)) {
+      errors.push('First name cannot contain numbers');
+    }
+
+    // Last Name validation
+    if (!this.selectedUser.lastName.trim()) {
+      errors.push('Last name is required');
+    } else if (/\d/.test(this.selectedUser.lastName)) {
+      errors.push('Last name cannot contain numbers');
+    }
+
+    // Age validation
+    if (this.selectedUser.age <= 0) {
+      errors.push('Age must be a positive number');
+    }
+
+    // Designation validation
+    if (!this.selectedUser.designation.trim()) {
+      errors.push('Designation is required');
+    }
+
+    if (errors.length > 0) {
+      alert(errors.join('\n'));
       return; 
+    }
+
+    this.http.put<User>(`${this.apiUrl}/${this.selectedUser.id}`, this.selectedUser).subscribe({
+      next: () => {
+        this.loadUsers();
+        this.selectedUser = null;
+      },
+      error: (err) => console.error('Error updating user', err),
+    });
   }
-  
 
-const { email, ...userData } = this.selectedUser;
- this.http
- .put<User>(`${this.apiUrl}/${this.selectedUser.id}`, userData)
- .subscribe({
- next: () => {
- this.loadUsers();
-this.selectedUser = null;
- },
-error: (err) => console.error('Error updating user', err),
- });
-}
-
-  
   onCancel(): void {
     this.selectedUser = null;
   }
 
-  
   onDelete(id: number): void {
     if (confirm('Are you sure you want to delete this user?')) {
       this.http.delete(`${this.apiUrl}/${id}`).subscribe({
@@ -89,7 +103,6 @@ error: (err) => console.error('Error updating user', err),
     }
   }
 
-  /** Logout */
   logout(): void {
     localStorage.removeItem('loggedIn');
     this.router.navigate(['/login']);

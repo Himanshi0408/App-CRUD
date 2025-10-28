@@ -1,182 +1,100 @@
-/* ===========================
-    Root Theme Variables (High Contrast & Professional)
-=========================== */
-:root {
-    /* Primary: Stronger, more vibrant Indigo */
-    --primary: #4a43d1;      /* Deep Violet-Indigo */
-    --primary-dark: #3a33b8; /* Darker Indigo */
-    --primary-light: #e0e6ff;/* Light Lavender/Sky Blue */
-
-    
-    --success: #1baf5a;      
-    --success-dark: #15934a;
-    
-    --danger: #e74c3c;       /* Strong Red (Delete/Logout) */
-    --danger-dark: #c0392b;
-
-    --warning: #f39c12;      
-    --warning-dark: #d68910;
-    
-    --text-dark: #2c3e50;    
-    --text-medium: #7f8c8d;  
-    --text-light: #ffffff;
-    --bg-light: #f6f8fa;     
-    --bg-white: #ffffff;
-    
-    /* Prominent Shadows for 3D/Floating Effect */
-    --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-/* ===========================
-    Base Styles & Container
-=========================== */
-body {
-    background-color: var(--bg-light); 
-    font-family: 'Poppins', sans-serif;
-    color: var(--text-dark); 
-}
-
+/* General Container */
 .container {
-    max-width: 1200px;
-    margin-top: 50px !important;
-    margin-bottom: 50px !important;
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 0 20px;
 }
 
-/* ===========================
-    Headings
-=========================== */
-h2 {
-    color: var(--primary); 
-    font-weight: 800;
-    text-align: center;
-    margin-bottom: 35px;
-    font-size: 34px;
-}
-
-/* ===========================
-    Card (Table and Edit Form)
-=========================== */
+/* Card Styling  */
 .card {
-    border: none;
-    border-radius: 18px; 
-    box-shadow: var(--shadow-md); 
-    background-color: var(--bg-white);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  background-color: #fff;
 }
 
-/* Edit Form Card*/
-.card:has(h4.text-primary) {
-    border-top: 6px solid var(--primary); 
-    box-shadow: 0 15px 40px rgba(74, 67, 209, 0.2); 
+/* Header  */
+h2 {
+  text-align: center;
+  color: var(--primary);
+  font-weight: 800;
+  margin-bottom: 40px;
 }
 
-h4.text-primary {
-    color: var(--primary) !important; 
-    font-weight: 700;
-    border-bottom: 1px solid #eef2ff;
-    padding-bottom: 20px;
-    margin-bottom: 30px;
+/*  Table Styling  */
+.table {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-/* ===========================
-    Tables
-=========================== */
 .table thead th {
-    background-color: var(--primary-light);
-    color: var(--primary-dark);
-    font-weight: 700;
-    font-size: 0.9rem;
-    border-bottom: 3px solid var(--primary); 
-    padding: 18px 15px; 
+  background-color: #0d6efd;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
 }
 
-.table tbody tr:hover {
-    background-color: #eef1ff; 
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+.table tbody td {
+  vertical-align: middle;
+  text-align: center;
 }
 
-.table td {
-    vertical-align: middle;
-    padding: 15px;
-    border-color: #f1f1f1;
+.table-hover tbody tr:hover {
+  background-color: #f1f5ff;
 }
 
-/* ===========================
-    Form Controls
-=========================== */
-.form-label {
+
+@media (max-width: 1200px) {
+  .container {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .table thead {
+    display: none;
+  }
+
+  .table,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+
+  .table tr {
+    margin-bottom: 15px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+  }
+
+  .table td {
+    text-align: right;
+    padding: 8px;
+    position: relative;
+  }
+
+  .table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    text-align: left;
     font-weight: 600;
-    color: var(--text-dark); 
-    margin-bottom: 6px;
+    color: #555;
+  }
 }
 
-.form-control {
-    border-radius: 10px;
-    padding: 12px 15px;
-    border: 1px solid #bdc3c7;
-}
-
-.form-control:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 4px rgba(74, 67, 209, 0.2);
-}
-
-.form-control[disabled] {
-    background-color: #ecf0f1;
-    color: var(--text-medium);
-}
-
-/* ===========================
-    Buttons - Base & Actions
-=========================== */
-.btn {
-    border-radius: 10px;
-    font-weight: 600;
-    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); /* Smoother animation */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-.btn:hover {
-    transform: translateY(-3px); 
-}
-
-/* --- Table Action Buttons --- */
 .btn-edit {
-    background-color: var(--warning);
-    color: var(--text-dark); 
-    box-shadow: 0 4px 10px rgba(243, 156, 18, 0.2);
+  background-color: #468cf5;
+  color: white;
 }
-
-.btn-danger {
-    background-color: var(--danger);
-    color: var(--text-light);
-}
-.btn-danger:hover {
-    box-shadow: 0 6px 15px rgba(231, 76, 60, 0.4);
-}
-
-/* --- Edit Form Buttons --- */
-.btn-save {
-    background-color: var(--success);
-    color: var(--text-light);
-    box-shadow: 0 6px 15px rgba(27, 175, 90, 0.4);
-}
-
-.btn-secondary {
-    background-color: #95a5a6;
-    color: var(--text-light);
-}
-
-/* --- Logout Button FIX --- */
-.text-center .btn-primary {
-    
-    background-color: var(--danger); 
-    border-color: var(--danger);
-    color: var(--text-light) !important; 
-    font-weight: 700;
-    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
-}
-.text-center .btn-primary:hover {
-    background-color: var(--danger-dark);
-    border-color: var(--danger-dark);
+.btn-edit:hover {
+  background-color: #0b5ed7;
+  transform: scale(1.05);
 }
