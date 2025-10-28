@@ -1,14 +1,40 @@
 # Crud
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.3.
+This is a simple CRUD (Create, Read, Update, Delete) web application built with Angular, Bootstrap, and JSON Server.
+It allows users to manage records  with a responsive interface and clean design.
+
+# Features
+
+Add new users
+
+Edit existing users
+
+Delete users
+
+View all users in a table
+
+Real-time form validation
+
+Fully responsive UI with Bootstrap
+
+# Install dependencies
+npm install
 
 ## Development server
 
 To start a local development server, run:
 
-```bash
+npx json-server --watch src/app/db.json --port 3000
+
+Run Angular development server:
 ng serve
-```
+
+Angular will run at:
+ http://localhost:4200/
+
+
+
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
